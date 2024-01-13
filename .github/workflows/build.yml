@@ -1,0 +1,38 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: chceck code
+        uses: actions/checkout@v2
+      
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 'v20.9.0'
+      
+      - name: install dependencies
+        run: npm install
+      
+      - name: build
+        run: npm run build
+
+      - name: set up Docker
+        uses: docker/setup-docker@v2
+        with:
+          dockerfile: Dockerfile
+
+      - name: login to ACR
+        run: docker login --username ${{ secrets.ACR_USERNAME }} --password=${{ secrets.ACR_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+
+      - name: build docker image
+        run: docker build -t registry.cn-shanghai.aliyuncs.com/zjy43/zhangjy.xyz:latest .
+      
+      - name: push to ACR
+        run: docker push registry.cn-shanghai.aliyuncs.com/zjy43/zhangjy.xyz:latest
+      
+
+  
