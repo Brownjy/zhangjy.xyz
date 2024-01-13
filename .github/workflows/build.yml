@@ -24,6 +24,7 @@ jobs:
         uses: docker/setup-docker@v2
         with:
           dockerfile: Dockerfile
+          context: .
 
       - name: login to ACR
         run: docker login --username ${{ secrets.ACR_USERNAME }} --password=${{ secrets.ACR_PASSWORD }} registry.cn-shanghai.aliyuncs.com
