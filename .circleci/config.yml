@@ -2,17 +2,16 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: ~/repo/website
+    working_directory: ~/repo
     docker:
       - image: cimg/node:18.16.0
     steps:
-      - checkout:
-          path: ~/repo/website
+      - checkout
       - run:
           name: Install dependencies
           command: |
-            cd ~/repo/website
             export NODE_OPTIONS=--openssl-legacy-provider
+            cd website
             yarn
             yarn build
       - setup_remote_docker:
