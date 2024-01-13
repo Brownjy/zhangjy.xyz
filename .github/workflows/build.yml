@@ -15,10 +15,10 @@ jobs:
           node-version: 'v20.9.0'
       
       - name: install dependencies
-        run: npm install
+        run: cd website && npm install
       
       - name: build
-        run: npm run build
+        run: cd website && npm run build
 
       - name: login to ACR
         run: docker login --username ${{ secrets.ACR_USERNAME }} --password=${{ secrets.ACR_PASSWORD }} registry.cn-shanghai.aliyuncs.com
