@@ -20,17 +20,13 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: set up Docker
-        uses: docker/setup-docker@v2
-        with:
-          dockerfile: Dockerfile
-          context: .
-
       - name: login to ACR
         run: docker login --username ${{ secrets.ACR_USERNAME }} --password=${{ secrets.ACR_PASSWORD }} registry.cn-shanghai.aliyuncs.com
 
       - name: build docker image
-        run: docker build -t registry.cn-shanghai.aliyuncs.com/zjy43/zhangjy.xyz:latest .
+        run: |
+          docker version
+          docker build -t registry.cn-shanghai.aliyuncs.com/zjy43/zhangjy.xyz:latest .
       
       - name: push to ACR
         run: docker push registry.cn-shanghai.aliyuncs.com/zjy43/zhangjy.xyz:latest
