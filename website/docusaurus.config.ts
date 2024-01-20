@@ -121,7 +121,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 张建勇 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" style="color: #d9d9d9;">蜀ICP备2024048881号</a> Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
