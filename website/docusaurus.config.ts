@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
+  title: '张建勇的博客',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
